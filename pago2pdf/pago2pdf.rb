@@ -121,13 +121,14 @@ class PagoPDF
   attr_accessor :file, :blocks, :title_page, :tp_blocks, :title, :author, :contact, :font, :x_margin,
                 :y_margin, :line_count, :page_count
 
-  def initialize(title_page=nil, font="Courier", x_margin = 0.4, y_margin = 1.1)
+  def initialize(title_page=nil, font="Courier", x_margin = 0.4, y_margin = 1.5, y_right_margin = 0.7)
     @file = PDF::Writer.new
     @file.compressed = true
     @font = font
     @x_margin = PDF::Writer.in2pts(x_margin)
     @y_margin = PDF::Writer.in2pts(y_margin)
-    @file.margins_pt(@x_margin, @y_margin)
+    @y_right_margin = PDF::Writer.in2pts(y_right_margin)
+    @file.margins_pt(@x_margin, @y_margin, @x_margin, @y_right_margin)
     if @font != "Courier"
       PDF::Writer::FONT_PATH << "./fonts"
       PDF::Writer::FontMetrics::METRICS_PATH << "./fonts"
