@@ -1,0 +1,85 @@
+(text copied from http://www.vim.org/scripts/script.php?script_id=2447)
+Version imported into this repo : 0.2.31
+
+Pago is probably the most powerful terminal-based screenwriting script available for any platform, and allows the use of vim as a fully-functional piece of screenwriting software such as Final Draft or Celtx.  While some elements of the script are unstable, it undergoes daily testing and revision, becoming more mature as I use it every day for my own screenwriting projects.
+
+PLEASE PROVIDE ME WITH FEEDBACK if you use or test this software -- any comments or requested features will be given full consideration.  (zazaian (at) gmail (dot) com).  Your thoughts are essential to developing this program into a piece of software that best serves the open source community.
+
+Overview
+========
+* Supports all major formatting elements of a screenplay, based on both logical and commonly accepted conventions of the screenplay form.
+* Automatically enforces all boundaries within each screenplay element, ensuring proper formatting to the exact specifications of a screenplay.
+* Allows access to all six available screenplay ELEMENTS without any complex keyboard shortcuts or commands, using only the keys <Backspace>, <Tab>, <Enter>, <Up>, <Down>, <Left>, <Right>.
+* Allows easy cycling through blank screenplay elements using both the <Tab> and <Backspace> keys.
+
+  Features
+  ========
+  * Pressing TAB cycles through empty screenplay elements in the order:
+
+    ACTION --> DIALOGUE --> PARENTHETICAL --> CHARACTER --> TRANSITION --> ACTION
+
+    * Pressing <Tab> from a blank TRANSITION element will cycle back to the
+      beginning of the line, triggering a blank ACTION element.
+
+    * Parentheses are automatically inserted when calling a blank PARENTHETICAL
+      element.  Pressing <Tab> from within blank parentheses will automatically
+      delete the parentheses and jump to a blank CHARACTER element.
+
+    * A colon (":") is automatically inserted at the end of the line when an
+      TRANSITION element is called.  The cursor remains at the spot of the colon
+      when text is either entered or deleted.
+      
+      * Text typed within a TRANSITION element is automatically RIGHT-JUSTIFIED.
+
+      * Pressing <Enter> from a TRANSITION element jumps two lines down the page
+        and prompts a blank SCENE HEADING element.
+
+  * Pressing <Backspace> on an empty line cycles through empty screenplay elements
+    in the reverse order:
+
+    TRANSITION --> CHARACTER --> PARENTHETICAL --> DIALOGUE --> ACTION
+    --> END OF PREVIOUS ELEMENT
+
+    * Pressing <Backspace> from a blank line jumps to the end of the previous
+      element or, if the above two lines are blank, will create a blank ACTION
+      element two lines above the previous cursorline.
+    
+    * Pressing <Backspace> on a line with text will delete the character to the
+      left of the cursor.
+
+  * All text typed with a SCENE HEADING, CHARACTER, or TRANSITION element will be
+    automatically CAPITALIZED.
+
+  * To create a SCENE HEADING element, press enter while in a blank ACTION element.
+    The Cursorline will be HIGHLIGHTED and all text typed within the element will
+    be CAPITALIZED.
+
+  * While in a blank SCENE HEADING element:
+    * Press the <Space> bar to cycle through the common prefixes INT., EXT., and
+      INT./EXT.
+    * Press <Enter> to jump down two lines to a new, blank ACTION element.
+
+  * Active screenplay element is displayed in CAPS in the status bar.
+
+  * Page number is displayed in the status bar.  This estimates the number of pages
+    within your screeplay using a 56-line-per-page standard.
+
+  * Pressing <Up> in either INSERT or NORMAL modes jumps to the beginning of the
+    line above the cursorline.
+
+  * Pressing <Down> in either INSERT or NORMAL modes jumps to the end of the
+    line above the cursorline.
+
+  * Holding <Left> in either INSERT or NORMAL modes scrolls through to the
+    beginning of the current element, then jumps to the end of the previous
+    element.
+
+  * Holding <Right> in either INSERT or NORMAL modes scrolls through to the
+    end of the current element, then jumps to the beginning of the next
+    element.
+
+  * Typing text within a screenplay element such as DIALOGUE or ACTION will
+    automatically reformat the paragraph if text exceeds the preset end of the
+    line.  This improves upon use of the :tw (text width) and :wrap commands by
+    formatting text that is typed within a paragraph, rather than simply at the end
+    of it. 
